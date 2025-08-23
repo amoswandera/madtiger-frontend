@@ -1,0 +1,174 @@
+/* src/Sidebar.css */
+
+.sidebar {
+  width: 300px;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  height: 100vh;
+  border-right: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  line-height: 0;
+}
+
+.logo img {
+  max-height: 40px;
+  width: auto;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-bottom: 30px;
+}
+
+.search-bar .search-icon {
+  color: #6c757d;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 12px 5px;
+  font-size: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s;
+}
+
+.sidebar-nav li:last-child a {
+  border-bottom: none;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+  color: #000;
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.company-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+/* src/Sidebar.css */
+/* ... (at the end of the file) ... */
+
+.cart-icon {
+  position: relative; /* This is needed for the badge positioning */
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.cart-icon-link {
+    color: inherit; /* Makes the icon inherit its color */
+    text-decoration: none; /* Removes the underline */
+}
+
+.user-info {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.user-info span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.logout-button:hover, .login-link:hover {
+  background-color: #555;
+}
+
+.user-info {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.user-info-link {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+}
+.user-info-link:hover {
+  text-decoration: underline;
+}
+
+.logout-button, .login-link {
+  display: inline-block;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}

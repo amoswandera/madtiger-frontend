@@ -1,0 +1,22 @@
+/* src/BrandLogos.css */
+.brand-logos-container {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 80px;
+}
+.brand-logos-container h2 { font-weight: 400; font-size: 1.5rem; }
+.brand-logos-container p { color: #6c757d; margin-bottom: 30px; }
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.logos span { /* This would be 'img' if you were using image files */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6c757d;
+}

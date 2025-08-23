@@ -1,0 +1,33 @@
+/* src/CollectionModal.css */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-content {
+  background: white; position: relative;
+  padding: 40px; border-radius: 8px;
+  width: 90%; max-width: 800px;
+}
+.close-btn {
+  position: absolute; top: 15px; right: 15px;
+  background: none; border: none; cursor: pointer; color: #333;
+}
+.carousel-container {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.carousel-slide { text-align: center; }
+.carousel-slide img {
+  max-width: 100%; max-height: 60vh;
+  object-fit: contain; margin-bottom: 20px;
+}
+.carousel-arrow {
+  background: #f8f9fa; border: 1px solid #e9ecef;
+  border-radius: 50%; width: 50px; height: 50px;
+  cursor: pointer;
+}
+.details-link-btn {
+    display: inline-block; background: #333; color: white;
+    padding: 12px 28px; border-radius: 25px;
+    text-decoration: none; margin-top: 15px;
+}

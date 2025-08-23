@@ -1,0 +1,187 @@
+/* src/CartPage.css (Final Responsive Version) */
+
+.cart-page {
+  max-width: 1200px;
+  margin-left: 300px; 
+  padding: 40px; 
+  box-sizing: border-box;
+}
+
+.cart-page h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.cart-table-container {
+  overflow-x: auto;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cart-table thead {
+    text-align: left;
+}
+
+.cart-table th, .cart-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.cart-table thead th {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cart-item-name {
+  font-weight: 500;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls button {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.quantity-controls span {
+  padding: 0 15px;
+  font-weight: 500;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+}
+
+.cart-summary {
+  margin-top: 30px;
+  text-align: right;
+}
+
+/* --- THIS IS THE RESPONSIVE MAGIC --- */
+@media (max-width: 768px) {
+  /* On small screens, hide the table headers */
+  .cart-table thead {
+    display: none;
+  }
+
+  /* Make each table component a block */
+  .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* Each row becomes a card */
+  .cart-table tr {
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  /* Each cell becomes a row inside the card */
+  .cart-table td {
+    display: flex;
+    justify-content: space-between; /* Puts label on left, value on right */
+    align-items: center;
+    text-align: right;
+    padding: 15px;
+    border-bottom: 1px solid #f8f9fa; /* Lighter separator inside cards */
+  }
+
+  .cart-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Use the data-label from our JS to create a label on the left */
+  .cart-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+    margin-right: 20px;
+  }
+  
+  /* The first "cell" (product info) should look like a header */
+  .td-product {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: #f8f9fa;
+    margin: -10px -10px 10px -10px;
+    width: auto;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  /* Hide the "Product" label for the main cell */
+  .td-product::before {
+    content: ""; 
+  }
+
+  .cart-item-name {
+    font-size: 1.2rem;
+  }
+
+  .cart-summary {
+    text-align: center;
+  }
+}
+
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.checkout-btn, 
+.continue-shopping-btn {
+  display: inline-block;
+  background-color: #333;
+  color: #fff !important;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none !important;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.checkout-btn:hover, 
+.continue-shopping-btn:hover {
+  background-color: #555;
+}
+

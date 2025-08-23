@@ -1,0 +1,77 @@
+/* src/HomePage.css (Final Corrected Version for Image Display) */
+
+.main-content {
+  padding: 40px;
+  margin-left: 300px;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.hero-section p {
+  color: #6c757d;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+.hero-button {
+  background-color: #add8e6;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 35px;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-weight: 300;
+    font-size: 2.5rem;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.collage-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(150px, auto);
+  grid-template-areas:
+    "item1 item2 item2 item3"
+    "item1 item4 item6 item3"
+    "item5 item4 item7 item7";
+}
+
+.collage-item {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Add a subtle background to make it look clean and professional */
+  background-color: #f8f9fa; 
+  border: 1px solid #e9ecef; /* Add a very light border */
+}
+
+.collage-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+
+.collage-item-1 { grid-area: item1; }
+.collage-item-2 { grid-area: item2; }
+.collage-item-3 { grid-area: item3; }
+.collage-item-4 { grid-area: item4; }
+.collage-item-5 { grid-area: item5; }
+.collage-item-6 { grid-area: item6; }
+.collage-item-7 { grid-area: item7; }

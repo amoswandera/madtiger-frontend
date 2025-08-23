@@ -1,0 +1,32 @@
+/* src/PaymentForm.css */
+.payment-form {
+  margin-top: 20px;
+}
+
+.pay-now-btn {
+  width: 100%;
+  background-color: #5469d4; /* Stripe's brand color */
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+.pay-now-btn:hover:not(:disabled) {
+  background-color: #4355a9;
+}
+
+.pay-now-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-error {
+  color: #ff4d4d;
+  margin-top: 15px;
+}
