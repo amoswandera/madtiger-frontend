@@ -49,7 +49,13 @@ const HomePage = () => {
             key={product.id} 
             className={`collage-item ${collageClasses[index]}`}
           >
-            <img src={product.image} alt={product.name} className="collage-item-image" />
+            // ... inside the .map() function ...
+          <img 
+            src={(product.image && product.image.url) ? product.image.url : `https://via.placeholder.com/600x400?text=Image`} 
+            alt={product.name} 
+            className="collage-item-image" 
+          />
+          // ...
           </Link>
         ))}
       </section>

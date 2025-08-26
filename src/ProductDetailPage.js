@@ -1,5 +1,3 @@
-// src/ProductDetailPage.js (Updated with Navigation)
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
@@ -19,11 +17,7 @@ const ProductDetailPage = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        // --- THIS IS THE CORRECTED LINE ---
-        // Use the environment variable for the API call
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}/`);
-        // --- END CORRECTION ---
-        
         const data = await response.json();
         setProduct(data);
       } catch (error) {
@@ -43,7 +37,6 @@ const ProductDetailPage = () => {
     }
   };
 
-  // Navigation logic remains the same
   const currentIndex = products.findIndex(p => p.id === parseInt(id));
   const prevProductId = currentIndex > 0 ? products[currentIndex - 1].id : null;
   const nextProductId = currentIndex < products.length - 1 ? products[currentIndex + 1].id : null;
@@ -55,7 +48,6 @@ const ProductDetailPage = () => {
     return <main className="main-content"><p>Product not found.</p></main>;
   }
 
-  // The JSX part of the component remains exactly the same
   return (
     <main className="main-content">
       <div className="product-detail-layout">
@@ -67,7 +59,12 @@ const ProductDetailPage = () => {
 
         <div className="product-detail-container">
           <div className="product-image-section">
-            <img src={product.image} alt={product.name} />
+            {/* --- THIS IS THE CORRECTED LINE --- */}
+            <img 
+              src={(product.image && product.image.url) ? product.image.url : 'https://via.placeholder.com/600x800?text=No+Image'} 
+              alt={product.name} 
+            />
+            {/* --- END CORRECTION --- */}
           </div>
           <div className="product-info-section">
             <h1>{product.name}</h1>

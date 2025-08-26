@@ -88,7 +88,13 @@ const ShopPage = () => {
         {products.map(product => (
           <Link to={`/product/${product.id}`} key={product.id} className="product-card-link">
             <div className="product-card">
-              <img src={product.image || 'https://via.placeholder.com/400?text=No+Image'} alt={product.name} className="product-card-image" />
+              // ... inside the .map() function ...
+              <img 
+                src={(product.image && product.image.url) ? product.image.url : 'https://via.placeholder.com/400?text=No+Image'} 
+                alt={product.name} 
+                className="product-card-image"
+              />
+              // ...
               <div className="product-card-info">
                 <h3 className="product-card-name">{product.name}</h3>
                 <p className="product-card-price">${product.price}</p>

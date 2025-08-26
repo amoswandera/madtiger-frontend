@@ -46,11 +46,13 @@ const CartPage = () => {
                 {/* Each <td> now has a data-label */}
                 <td data-label="Product" className="td-product">
                   <div className="cart-item-info">
+                    // ... inside the .map() function ...
                     <img 
-                      src={item.image || 'https://via.placeholder.com/80'} 
+                      src={(item.image && item.image.url) ? item.image.url : 'https://via.placeholder.com/80'} 
                       alt={item.name} 
                       className="cart-item-image" 
                     />
+                    // ...
                     <span className="cart-item-name">{item.name}</span>
                   </div>
                 </td>

@@ -9,17 +9,12 @@ const ProfilePage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // This function will be reused to refresh the order list after a cancellation
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      // --- THIS IS THE FIRST FIX ---
-      // Use the environment variable for the API call
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/`, {
         headers: { 'Authorization': `Token ${token}` },
       });
-      // --- END FIX ---
-
       if (!response.ok) {
         throw new Error('Failed to fetch orders');
       }
@@ -46,8 +41,6 @@ const ProfilePage = () => {
         return;
     }
     try {
-      // --- THIS IS THE SECOND FIX ---
-      // Use the environment variable for the API call
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${orderId}/cancel/`, {
         method: 'POST',
         headers: { 
@@ -55,8 +48,6 @@ const ProfilePage = () => {
           'Authorization': `Token ${token}` 
         },
       });
-      // --- END FIX ---
-
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || 'Failed to cancel order.');
@@ -81,7 +72,6 @@ const ProfilePage = () => {
     return <main className="main-content"><h2>My Orders</h2><p>Loading your order history...</p></main>;
   }
 
-  // The JSX part of the component remains exactly the same
   return (
     <main className="main-content">
       <h1 className="profile-title">My Orders</h1>
@@ -104,7 +94,13 @@ const ProfilePage = () => {
               <div className="order-card-body">
                 {order.items && order.items.map(item => (
                   <div key={item.product.id} className="order-item">
-                    <img src={item.product.image} alt={item.product.name} className="order-item-image" />
+                    {/* --- THIS IS THE CORRECTED LINE --- */}
+                    <img 
+                      src={(item.product.image && item.product.image.url) ? item.product.image.url : 'https://via.placeholder.com/80'} 
+                      alt={item.product.name} 
+                      className="order-item-image" 
+                    />
+                    {/* --- END CORRECTION --- */}
                     <div className="order-item-details">
                       <p><strong>{item.product.name}</strong></p>
                       <p>Quantity: {item.quantity}</p>
