@@ -1,5 +1,3 @@
-// src/CartPage.js (Final Responsive Version)
-
 import React from 'react';
 import { useCart } from './CartContext';
 import { Link } from 'react-router-dom';
@@ -43,16 +41,14 @@ const CartPage = () => {
           <tbody>
             {items.map(item => (
               <tr key={item.id}>
-                {/* Each <td> now has a data-label */}
                 <td data-label="Product" className="td-product">
                   <div className="cart-item-info">
-                    // ... inside the .map() function ...
+                    {/* THIS IS THE FIX: Invalid comments are removed */}
                     <img 
                       src={(item.image && item.image.url) ? item.image.url : 'https://via.placeholder.com/80'} 
                       alt={item.name} 
                       className="cart-item-image" 
                     />
-                    // ...
                     <span className="cart-item-name">{item.name}</span>
                   </div>
                 </td>

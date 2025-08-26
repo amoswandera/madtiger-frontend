@@ -1,5 +1,3 @@
-// src/HomePage.js (Final Corrected Version with Both Sections)
-
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 import { Link } from 'react-router-dom';
@@ -12,11 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // --- THIS IS THE CORRECTED LINE ---
-        // We use backticks (`) to create a template literal string
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/`);
-        // --- END CORRECTION ---
-
         const data = await response.json();
         setProducts(data.results); 
       } catch (error) {
@@ -40,7 +34,6 @@ const HomePage = () => {
         <button className="hero-button">Discover it own it !</button>
       </section>
 
-      {/* --- THIS IS THE RESTORED PRODUCT COLLAGE --- */}
       <h2 className="section-title">Featured Products</h2>
       <section className="collage-container">
         {products.slice(0, 7).map((product, index) => (
@@ -49,19 +42,15 @@ const HomePage = () => {
             key={product.id} 
             className={`collage-item ${collageClasses[index]}`}
           >
-            // ... inside the .map() function ...
-          <img 
-            src={(product.image && product.image.url) ? product.image.url : `https://via.placeholder.com/600x400?text=Image`} 
-            alt={product.name} 
-            className="collage-item-image" 
-          />
-          // ...
+            <img 
+              src={(product.image && product.image.url) ? product.image.url : `https://via.placeholder.com/400?text=Image`}
+              alt={product.name} 
+              className="collage-item-image" 
+            />
           </Link>
         ))}
       </section>
-      {/* --- END RESTORED COLLAGE --- */}
 
-      {/* --- THE CATEGORY SECTIONS RENDERED BELOW THE COLLAGE --- */}
       <h2 className="section-title">Shop by Category</h2>
       <CategorySections />
       

@@ -59,12 +59,10 @@ const ProductDetailPage = () => {
 
         <div className="product-detail-container">
           <div className="product-image-section">
-            {/* --- THIS IS THE CORRECTED LINE --- */}
             <img 
               src={(product.image && product.image.url) ? product.image.url : 'https://via.placeholder.com/600x800?text=No+Image'} 
               alt={product.name} 
             />
-            {/* --- END CORRECTION --- */}
           </div>
           <div className="product-info-section">
             <h1>{product.name}</h1>

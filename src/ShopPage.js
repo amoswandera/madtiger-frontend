@@ -10,11 +10,8 @@ const ShopPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // --- THIS IS THE FIRST FIX ---
-  // Use the environment variable for the initial URL
   const initialUrl = `${process.env.REACT_APP_API_URL}/api/products/`;
 
-  // Reusable fetch function - no changes needed here as it handles full URLs from pagination
   const fetchProducts = async (url) => {
     try {
       setLoading(true);
@@ -30,12 +27,9 @@ const ShopPage = () => {
     }
   };
 
-  // Effect to fetch the list of categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        // --- THIS IS THE SECOND FIX ---
-        // Use the environment variable for the categories API call
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/categories/`);
         const data = await response.json();
         setCategories(data);
@@ -46,16 +40,14 @@ const ShopPage = () => {
     fetchCategories();
   }, []);
 
-  // Effect to re-fetch products when the category filter changes
   useEffect(() => {
     let url = initialUrl;
     if (selectedCategory) {
       url = `${initialUrl}?category=${selectedCategory}`;
     }
     fetchProducts(url);
-  }, [selectedCategory]);
+  }, [selectedCategory, initialUrl]); // Added initialUrl as a dependency
 
-  // Handlers for pagination - no changes needed
   const handleNextPage = () => nextPageUrl && fetchProducts(nextPageUrl);
   const handlePrevPage = () => prevPageUrl && fetchProducts(prevPageUrl);
 
@@ -67,7 +59,6 @@ const ShopPage = () => {
     return <main className="main-content"><h1>Shop</h1><p>Loading...</p></main>;
   }
 
-  // The JSX part of the component remains exactly the same
   return (
     <main className="main-content">
       <div className="shop-header">
@@ -88,13 +79,12 @@ const ShopPage = () => {
         {products.map(product => (
           <Link to={`/product/${product.id}`} key={product.id} className="product-card-link">
             <div className="product-card">
-             
+              {/* THIS IS THE FIX: Invalid comments are removed */}
               <img 
                 src={(product.image && product.image.url) ? product.image.url : 'https://via.placeholder.com/400?text=No+Image'} 
                 alt={product.name} 
                 className="product-card-image"
               />
-              // ...
               <div className="product-card-info">
                 <h3 className="product-card-name">{product.name}</h3>
                 <p className="product-card-price">${product.price}</p>

@@ -94,13 +94,12 @@ const ProfilePage = () => {
               <div className="order-card-body">
                 {order.items && order.items.map(item => (
                   <div key={item.product.id} className="order-item">
-                    {/* --- THIS IS THE CORRECTED LINE --- */}
+                    {/* THIS IS THE FIX: Invalid comments are removed */}
                     <img 
                       src={(item.product.image && item.product.image.url) ? item.product.image.url : 'https://via.placeholder.com/80'} 
                       alt={item.product.name} 
                       className="order-item-image" 
                     />
-                    {/* --- END CORRECTION --- */}
                     <div className="order-item-details">
                       <p><strong>{item.product.name}</strong></p>
                       <p>Quantity: {item.quantity}</p>
