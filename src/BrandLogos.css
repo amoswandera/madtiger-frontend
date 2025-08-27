@@ -20,3 +20,10 @@
   font-weight: bold;
   color: #6c757d;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

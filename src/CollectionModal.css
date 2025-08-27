@@ -31,3 +31,10 @@
     padding: 12px 28px; border-radius: 25px;
     text-decoration: none; margin-top: 15px;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

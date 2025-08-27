@@ -1,4 +1,12 @@
-/* src/ProductDetailPage.css */
+/* --- Base Styles for Desktop --- */
+
+.product-detail-layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .product-detail-container {
   display: flex;
   gap: 40px;
@@ -56,13 +64,6 @@
   background-color: #555;
 }
 
-.product-detail-layout {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .nav-arrow {
   position: absolute;
   top: 50%;
@@ -85,4 +86,35 @@
 
 .nav-arrow.next {
   right: -30px;
+}
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 768px) {
+  /* This rule is not needed here as it will be in the parent's CSS */
+  /* If you want to keep CSS per-component, uncomment the margin-left and padding */
+  /*
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+  */
+
+  /* Stack the product image on top of the product info */
+  .product-detail-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Hide the desktop-only navigation arrows on small screens */
+  .nav-arrow {
+    display: none;
+  }
+
+  .product-info-section h1 {
+    font-size: 2rem; /* Make titles smaller on mobile */
+  }
+
+  .product-info-section .price {
+    font-size: 1.5rem; /* Make prices smaller on mobile */
+  }
 }

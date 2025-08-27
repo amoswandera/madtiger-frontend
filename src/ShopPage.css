@@ -108,3 +108,11 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  /* On mobile, remove the margin that was for the sidebar */
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
