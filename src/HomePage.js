@@ -42,11 +42,14 @@ const HomePage = () => {
             key={product.id} 
             className={`collage-item ${collageClasses[index]}`}
           >
+            {/* --- THIS IS THE CORRECTED LINE --- */}
+            {/* We now use the simple and reliable 'image_url' field from the API */}
             <img 
-              src={(product.image && product.image.url) ? product.image.url : `https://via.placeholder.com/400?text=Image`}
+              src={product.image_url || `https://via.placeholder.com/400?text=Image`}
               alt={product.name} 
               className="collage-item-image" 
             />
+            {/* --- END CORRECTION --- */}
           </Link>
         ))}
       </section>

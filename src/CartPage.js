@@ -43,12 +43,13 @@ const CartPage = () => {
               <tr key={item.id}>
                 <td data-label="Product" className="td-product">
                   <div className="cart-item-info">
-                    {/* THIS IS THE FIX: Invalid comments are removed */}
+                    {/* --- THIS IS THE CORRECTED LINE --- */}
                     <img 
-                      src={(item.image && item.image.url) ? item.image.url : 'https://via.placeholder.com/80'} 
+                      src={item.image_url || 'https://via.placeholder.com/80'} 
                       alt={item.name} 
                       className="cart-item-image" 
                     />
+                    {/* --- END CORRECTION --- */}
                     <span className="cart-item-name">{item.name}</span>
                   </div>
                 </td>

@@ -46,7 +46,7 @@ const ShopPage = () => {
       url = `${initialUrl}?category=${selectedCategory}`;
     }
     fetchProducts(url);
-  }, [selectedCategory, initialUrl]); // Added initialUrl as a dependency
+  }, [selectedCategory, initialUrl]);
 
   const handleNextPage = () => nextPageUrl && fetchProducts(nextPageUrl);
   const handlePrevPage = () => prevPageUrl && fetchProducts(prevPageUrl);
@@ -79,12 +79,13 @@ const ShopPage = () => {
         {products.map(product => (
           <Link to={`/product/${product.id}`} key={product.id} className="product-card-link">
             <div className="product-card">
-              {/* THIS IS THE FIX: Invalid comments are removed */}
+              {/* --- THIS IS THE CORRECTED LINE --- */}
               <img 
-                src={(product.image && product.image.url) ? product.image.url : 'https://via.placeholder.com/400?text=No+Image'} 
+                src={product.image_url || 'https://via.placeholder.com/400?text=No+Image'} 
                 alt={product.name} 
                 className="product-card-image"
               />
+              {/* --- END CORRECTION --- */}
               <div className="product-card-info">
                 <h3 className="product-card-name">{product.name}</h3>
                 <p className="product-card-price">${product.price}</p>
