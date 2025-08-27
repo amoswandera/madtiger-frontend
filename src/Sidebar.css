@@ -1,6 +1,6 @@
-/* src/Sidebar.css (Final Responsive Version with Hamburger Menu) */
+/* src/Sidebar.css (Final, Definitive Responsive Version) */
 
-/* --- Desktop Styles (Mostly unchanged) --- */
+/* --- Base Styles for Desktop --- */
 .sidebar {
   width: 300px; padding: 30px 20px; background-color: #ffffff; height: 100vh;
   border-right: 1px solid #e9ecef; display: flex; flex-direction: column;
@@ -10,15 +10,23 @@
 .sidebar-header {
   display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
 }
-.logo img { max-height: 40px; width: auto; }
+.logo-link img { max-height: 40px; width: auto; display: block; }
+
+.header-icons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 .cart-icon-link { color: inherit; text-decoration: none; }
-.cart-icon { position: relative; cursor: pointer; }
+.cart-icon { position: relative; }
 .cart-badge {
   position: absolute; top: -8px; right: -8px; background-color: #ff4d4d;
   color: white; border-radius: 50%; padding: 2px 6px;
   font-size: 0.75rem; font-weight: bold;
 }
-.search-bar, .sidebar-nav, .sidebar-footer { display: block; }
+/* The hamburger is hidden on desktop by default */
+.hamburger-menu-button { display: none; }
+
 .search-bar {
   display: flex; align-items: center; background-color: #f8f9fa; border: 1px solid #e9ecef;
   border-radius: 5px; padding: 8px 12px; margin-bottom: 30px;
@@ -27,72 +35,58 @@
 .sidebar-nav { flex-grow: 1; }
 .sidebar-nav ul { list-style-type: none; padding: 0; margin: 0; }
 .sidebar-nav li a {
-  display: block; text-decoration: none; color: #333; padding: 12px 5px;
-  font-size: 1rem; border-bottom: 1px solid #e9ecef;
+  display: block; text-decoration: none; color: #333; padding: 12px 5px; font-size: 1rem; border-bottom: 1px solid #e9ecef;
 }
 .sidebar-nav li:last-child a { border-bottom: none; }
 .sidebar-nav li a:hover, .sidebar-nav li a.active { color: #000; font-weight: 500; }
 .sidebar-footer { padding-top: 20px; border-top: 1px solid #e9ecef; }
 .user-info { padding: 10px 5px; text-align: center; }
-.user-info-link { display: block; margin-bottom: 10px; font-weight: 500; text-decoration: none; color: #333; }
-.user-info-link:hover { text-decoration: underline; }
+.user-info-link {
+  display: block; margin-bottom: 10px; font-weight: 500; text-decoration: none; color: #333;
+}
 .logout-button, .login-link {
   display: inline-block; width: 100%; background-color: #333;
-  color: #fff !important; border: none; padding: 12px;
-  font-size: 1rem; font-weight: bold; border-radius: 5px;
-  cursor: pointer; text-align: center; text-decoration: none;
-  box-sizing: border-box;
-}
-
-/* Initially hide the mobile-specific icons on desktop */
-.mobile-header-icons, .hamburger-menu-button {
-    display: none;
+  color: #fff !important; border: none; padding: 12px; font-size: 1rem;
+  font-weight: bold; border-radius: 5px; cursor: pointer; text-align: center;
+  text-decoration: none; box-sizing: border-box;
 }
 
 /* --- Mobile Responsive Styles --- */
 @media (max-width: 768px) {
-  /* On mobile, the sidebar acts as the header bar */
+  /* On mobile, the sidebar becomes a header area */
   .sidebar {
-    width: 100%; height: auto; position: relative; flex-direction: column; /* Revert to column for stacking */
-    padding: 15px; border-right: none; border-bottom: 1px solid #e9ecef;
-    align-items: stretch; /* Stretch children to full width */
+    width: 100%; height: auto; position: relative; flex-direction: column;
+    padding: 15px; border-right: none; align-items: stretch;
   }
 
   .sidebar-header {
-    flex-direction: row;
     margin-bottom: 0;
   }
-
-  .mobile-header-icons {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Space between cart and hamburger */
-  }
-
+  
+  /* Show the hamburger button on mobile */
   .hamburger-menu-button {
     display: block;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
+    margin-left: -5px; /* Adjust spacing slightly */
   }
 
-  /* The main content of the sidebar is hidden by default on mobile */
+  /* The main sidebar content (search, nav, footer) is hidden by default */
   .sidebar-content-wrapper {
     display: none;
-    padding-top: 20px;
-    margin-top: 20px;
+    padding-top: 15px;
+    margin-top: 15px;
     border-top: 1px solid #e9ecef;
   }
 
-  /* This is the key: when the 'mobile-menu-open' class is added, we show the content */
+  /* WHEN the menu is open, the sidebar gets this class, and the content appears */
+  .sidebar.mobile-menu-open {
+    /* Prevent scrolling on the body when menu is open */
+    position: fixed;
+  }
   .sidebar.mobile-menu-open .sidebar-content-wrapper {
     display: block;
-  }
-
-  .cart-icon {
-      /* In the mobile top bar, we only want the cart and hamburger.
-         They are moved into a new container: .mobile-header-icons */
-      display: none;
   }
 }
