@@ -1,3 +1,5 @@
+// src/CollectionGrid.js (Final Corrected Version)
+
 import React, { useState, useEffect } from 'react';
 import './CollectionGrid.css';
 
@@ -5,10 +7,7 @@ const CollectionGrid = ({ onCollectionClick, categoryFilter }) => {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    // --- THIS IS THE CORRECTED LINE ---
     let apiUrl = `${process.env.REACT_APP_API_URL}/api/collections/`;
-    // --- END CORRECTION ---
-
     if (categoryFilter) {
       apiUrl += `?gender_category=${categoryFilter}`;
     }
@@ -29,7 +28,10 @@ const CollectionGrid = ({ onCollectionClick, categoryFilter }) => {
     <section className="collection-grid-container">
       {collections.map(collection => (
         <div key={collection.id} className="collection-card" onClick={() => onCollectionClick(collection.slug)}>
-          <img src={collection.image} alt={collection.name} />
+          <img 
+            src={collection.image_url || 'https://via.placeholder.com/600x800?text=No+Image'} 
+            alt={collection.name} 
+          />
           <div className="card-overlay">
             <h3>{collection.name}</h3>
             <p>{collection.description}</p>
